@@ -24,11 +24,11 @@ Results sample
 2. Count the number of items on the menu
 ```sql
 SELECT
-    COUNT(menu_item_id)
+    COUNT(menu_item_id) AS number_of_menu_items
 FROM menu_items;
 ```
 
 Results
-| COUNT\(menu\_item\_id\) |
+| number\_of\_menu\_items |
 | :--- |
 | 32 |
