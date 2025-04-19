@@ -7,7 +7,7 @@ SELECT
     *
 FROM menu_items;
 ```
-Results 
+Results sample 
 | menu\_item\_id | item\_name | category | price |
 | :--- | :--- | :--- | :--- |
 | 101 | Hamburger | American | 12.95 |
