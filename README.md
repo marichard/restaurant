@@ -1,13 +1,13 @@
 # Restaurant
 Order Analysis
 
-
+1.  View the menu items
 ```sql
 SELECT
     *
 FROM menu_items;
 ```
-Results sample of 32 rows
+Results 
 | menu\_item\_id | item\_name | category | price |
 | :--- | :--- | :--- | :--- |
 | 101 | Hamburger | American | 12.95 |
@@ -20,3 +20,15 @@ Results sample of 32 rows
 | 108 | Tofu Pad Thai | Asian | 14.50 |
 | 109 | Korean Beef Bowl | Asian | 17.95 |
 | 110 | Pork Ramen | Asian | 17.95 |
+
+2. Count the number of items on the menu
+```sql
+SELECT
+    COUNT(menu_item_id)
+FROM menu_items;
+```
+
+Results
+| COUNT\(menu\_item\_id\) |
+| :--- |
+| 32 |
