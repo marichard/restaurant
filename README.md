@@ -79,3 +79,21 @@ Results
 | menu\_item\_id | item\_name | category | price |
 | :--- | :--- | :--- | :--- |
 | 130 | Shrimp Scampi | Italian | 19.95 |
+
+
+6. How many dishes are in each category and what is the average price per dish in each category?
+```sql
+SELECT
+    category,
+    COUNT(category) AS category_count,
+    ROUND(AVG(price), 2) AS average_price
+FROM menu_items
+GROUP BY category;
+```
+Results
+| category | category\_count | average\_price |
+| :--- | :--- | :--- |
+| American | 6 | 10.07 |
+| Asian | 8 | 13.48 |
+| Mexican | 9 | 11.80 |
+| Italian | 9 | 16.75 |
