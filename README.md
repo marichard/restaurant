@@ -80,6 +80,20 @@ Results
 | :--- | :--- | :--- | :--- |
 | 130 | Shrimp Scampi | Italian | 19.95 |
 
+5. How Many Italian dishes are on the menu? What are the least and most expensive Italian dishes?
+```sql
+SELECT
+    category,
+    COUNT(menu_item_id) AS itlaian_dishes,
+    MIN(price) AS least_expensive,
+    MAX(price) AS most_expensive
+FROM menu_items
+WHERE category = 'Italian';
+```
+Result
+| category | itlaian\_dishes | least\_expensive | most\_expensive |
+| :--- | :--- | :--- | :--- |
+| Italian | 9 | 14.50 | 19.95 |
 
 6. How many dishes are in each category and what is the average price per dish in each category?
 ```sql
