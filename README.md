@@ -58,10 +58,11 @@ Results
 
 3. Least expensive menu item
 ```sql
-SELECT
+SELECT 
    *
 FROM menu_items
-ORDER BY price;
+ORDER BY price
+LIMIT 1;
 ```
 Results
 | menu\_item\_id | item\_name | category | price |
@@ -71,9 +72,10 @@ Results
 4. Most expensive menu item
 ```sql
 SELECT
-   *
+    *
 FROM menu_items
-ORDER BY price DESC;
+ORDER BY price DESC
+LIMIT 1;
 ```
 Results
 | menu\_item\_id | item\_name | category | price |
