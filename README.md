@@ -1,6 +1,6 @@
 # Restaurant Operations Analysis
 Explore customer data to see which menu items are doing well/not so well and what customers seem to like best.  
-Objectives:  
+Main objectives:  
 1. Get an idea of what's on the menu.
 2. Get an idea of the collected data.
 3. Understand how customers are reacting to the menu items avalible.
@@ -125,3 +125,16 @@ Results
 | Asian | 8 | 13.48 |
 | Mexican | 9 | 11.80 |
 | Italian | 9 | 16.75 |
+
+### Obective 2  
+1. What is the date range of the order details table?
+```sql
+SELECT
+    MIN(order_date) AS oldest_order_date,
+    MAX(order_date) AS newest_order_date
+FROM order_details;
+```
+Results
+| oldest\_order\_date | newest\_order\_date |
+| :--- | :--- |
+| 2023-01-01 | 2023-03-31 |
