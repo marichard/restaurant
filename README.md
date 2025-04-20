@@ -6,7 +6,8 @@ Objectives:
 * Understand how customers are reacting to the menu items avalible.
 
 ## Tools
-IDE: PyCharm   
+IDE: PyCharm  
+Language: SQL  
 Database: MySQL   
 * Dataset provided by Maven Analytics.
 
