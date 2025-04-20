@@ -8,15 +8,17 @@ SELECT
 FROM menu_items;
 
 -- What are the least and most expensive items on the menu?
-SELECT -- least expensive
+SELECT
    *
 FROM menu_items
-ORDER BY price;
+ORDER BY price
+LIMIT 1;
 
-SELECT -- most expensive
+SELECT
     *
 FROM menu_items
-ORDER BY price DESC;
+ORDER BY price DESC
+LIMIT 1;
 
 -- How many Italian dishes  are on the menu? Least and most expensive Italian dishes?
 SELECT
