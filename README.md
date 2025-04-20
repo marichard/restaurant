@@ -1,5 +1,9 @@
-# Restaurant
-Order Analysis
+# Restaurant Operations Analysis
+Explore customer data to see which menu items are doing well/not so well and what customers seem to like best.  
+Objectives:  
+* Get an idea of what's on the menu.
+* Get an idea of the collected data.
+* Understand how customers are reacting to the menu items avalible.
 
 ## Tools
 IDE: PyCharm   
