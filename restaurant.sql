@@ -30,6 +30,7 @@ FROM menu_items
 WHERE category = 'Italian';
 
 
+
 -- How many dishes are in each category and what is the average price per dish in each category?
 SELECT
     category,
@@ -37,3 +38,12 @@ SELECT
     ROUND(AVG(price), 2) AS average_price
 FROM menu_items
 GROUP BY category;
+
+-- What is the date range of the order details table?
+SELECT
+    MIN(order_date) AS oldest_order_date,
+    MAX(order_date) AS newest_order_date
+FROM order_details;
+-- How many orders were made within this date range? How many items were ordered within this range?
+-- Order that had the most number of items?
+-- How many orders had more than 12 items?
