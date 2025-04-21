@@ -184,3 +184,115 @@ Results
 | 20 |
 
 ### Final Objective 3
+1. Combine both tables into one table
+```sql
+SELECT
+    *
+FROM order_details AS od LEFT JOIN menu_items AS mi
+    ON od.item_id = mi.menu_item_id
+LIMIT 5;
+```
+Results
+| order\_details\_id | order\_id | order\_date | order\_time | item\_id | menu\_item\_id | item\_name | category | price |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 | 1 | 2023-01-01 | 11:38:36 | 109 | 109 | Korean Beef Bowl | Asian | 17.95 |
+| 2 | 2 | 2023-01-01 | 11:57:40 | 108 | 108 | Tofu Pad Thai | Asian | 14.50 |
+| 3 | 2 | 2023-01-01 | 11:57:40 | 124 | 124 | Spaghetti | Italian | 14.50 |
+| 4 | 2 | 2023-01-01 | 11:57:40 | 117 | 117 | Chicken Burrito | Mexican | 12.95 |
+| 5 | 2 | 2023-01-01 | 11:57:40 | 129 | 129 | Mushroom Ravioli | Italian | 15.50 |
+
+2. What was the least ordered item in what category?
+```sql
+SELECT
+    item_name,
+    category,
+    COUNT(order_details_id) AS purchases
+FROM order_details AS od LEFT JOIN menu_items AS mi
+    ON od.item_id = mi.menu_item_id
+GROUP BY item_name,
+         category
+ORDER BY purchases
+LIMIT 1;
+```
+Results
+| item\_name | category | purchases |
+| :--- | :--- | :--- |
+| Chicken Tacos | Mexican | 123 |
+
+3. What was the most ordered item in what category?
+```sql
+SELECT
+    item_name,
+    category,
+    COUNT(order_details_id) AS purchases
+FROM order_details AS od LEFT JOIN menu_items AS mi
+    ON od.item_id = mi.menu_item_id
+GROUP BY item_name,
+         category
+ORDER BY purchases DESC
+LIMIT 1;
+```
+Results
+| item\_name | category | purchases |
+| :--- | :--- | :--- |
+| Hamburger | American | 622 |
+
+4. Five most expensive orders
+```sql
+SELECT
+    order_id,
+    SUM(price) AS total
+FROM order_details AS od LEFT JOIN menu_items AS mi
+    ON od.item_id = mi.menu_item_id
+GROUP BY order_id
+ORDER BY total DESC
+LIMIT 5;
+```
+Results
+| order\_id | total |
+| :--- | :--- |
+| 440 | 192.15 |
+| 2075 | 191.05 |
+| 1957 | 190.10 |
+| 330 | 189.70 |
+| 2675 | 185.10 |
+
+5. Highest spend order details.
+```sql
+SELECT
+    category,
+    COUNT(item_id) AS items_count
+FROM order_details AS od LEFT JOIN menu_items AS mi
+    ON od.item_id = mi.menu_item_id
+WHERE order_id = 440
+GROUP BY category;
+```
+Results
+| category | items\_count |
+| :--- | :--- |
+| Mexican | 2 |
+| American | 2 |
+| Italian | 8 |
+| Asian | 2 |
+
+6. Top five orders, category, and purchase per order.
+```sql
+SELECT
+    order_id,
+    category,
+    COUNT(item_id) AS total_items,
+    SUM(price) AS total_spent
+FROM order_details AS od LEFT JOIN menu_items AS mi
+    ON od.item_id = mi.menu_item_id
+WHERE order_id IN (440, 2075, 1957, 330, 2675)
+GROUP BY order_id, category
+LIMIT 5;
+```
+Results
+| order\_id | category | total\_items | total\_spent |
+| :--- | :--- | :--- | :--- |
+| 330 | Asian | 6 | 87.40 |
+| 330 | American | 1 | 9.00 |
+| 330 | Italian | 3 | 50.40 |
+| 330 | Mexican | 4 | 42.90 |
+| 440 | Mexican | 2 | 20.95 |
