@@ -75,4 +75,65 @@ FROM order_details
 GROUP BY order_id
 HAVING total_items > 12) AS orders;
 
+-- Combine two tables into one table
+SELECT
+    *
+FROM order_details AS od LEFT JOIN menu_items AS mi
+    ON od.item_id = mi.menu_item_id;
+
+-- What were the least and most ordered items in what categories?
+SELECT
+    item_name,
+    category,
+    COUNT(order_details_id) AS purchases
+FROM order_details AS od LEFT JOIN menu_items AS mi
+    ON od.item_id = mi.menu_item_id
+GROUP BY item_name,
+         category
+ORDER BY purchases
+LIMIT 1;
+
+SELECT
+    item_name,
+    category,
+    COUNT(order_details_id) AS purchases
+FROM order_details AS od LEFT JOIN menu_items AS mi
+    ON od.item_id = mi.menu_item_id
+GROUP BY item_name,
+         category
+ORDER BY purchases DESC
+LIMIT 1;
+
+
+-- Five most expensive orders. Details of the highest spend order, what items were purchased?
+SELECT
+    order_id,
+    SUM(price) AS total
+FROM order_details AS od LEFT JOIN menu_items AS mi
+    ON od.item_id = mi.menu_item_id
+GROUP BY order_id
+ORDER BY total DESC
+LIMIT 5;
+
+SELECT
+    category,
+    COUNT(item_id) AS items_count
+FROM order_details AS od LEFT JOIN menu_items AS mi
+    ON od.item_id = mi.menu_item_id
+WHERE order_id = 440
+GROUP BY category;
+
+-- View top 5 orders, category, and purchase per order.
+SELECT
+    order_id,
+    category,
+    COUNT(item_id) AS total_items,
+    SUM(price) AS total_spent
+FROM order_details AS od LEFT JOIN menu_items AS mi
+    ON od.item_id = mi.menu_item_id
+WHERE order_id IN (440, 2075, 1957, 330, 2675)
+GROUP BY order_id, category
+LIMIT 5;
+
+
 
