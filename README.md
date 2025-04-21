@@ -275,7 +275,7 @@ Results
 | Italian | 8 |
 | Asian | 2 |
 
-6. Top five orders, category, and purchase per order.
+6. Top five orders, category, and purchases per order.
 ```sql
 SELECT
     order_id,
