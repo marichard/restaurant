@@ -41,9 +41,38 @@ GROUP BY category;
 
 -- What is the date range of the order details table?
 SELECT
+    *
+FROM order_details;
+
+SELECT
     MIN(order_date) AS oldest_order_date,
     MAX(order_date) AS newest_order_date
 FROM order_details;
+
 -- How many orders were made within this date range? How many items were ordered within this range?
+SELECT
+    COUNT(DISTINCT order_id) AS orders_made,
+    COUNT(order_id) AS total_items
+FROM order_details;
+
 -- Order that had the most number of items?
+SELECT
+    order_id,
+    COUNT(item_id) AS total_items
+FROM order_details
+GROUP BY order_id
+ORDER BY total_items DESC
+LIMIT 1;
+
 -- How many orders had more than 12 items?
+SELECT
+    COUNT(*) AS twelve_plus_orders
+FROM
+(SELECT
+    order_id,
+    COUNT(item_id) AS total_items
+FROM order_details
+GROUP BY order_id
+HAVING total_items > 12) AS orders;
+
+
