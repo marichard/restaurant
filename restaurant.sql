@@ -133,6 +133,7 @@ FROM order_details AS od LEFT JOIN menu_items AS mi
     ON od.item_id = mi.menu_item_id
 WHERE order_id IN (440, 2075, 1957, 330, 2675)
 GROUP BY order_id, category
+ORDER BY total_spent DESC
 LIMIT 5;
 
 
