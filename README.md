@@ -286,13 +286,14 @@ FROM order_details AS od LEFT JOIN menu_items AS mi
     ON od.item_id = mi.menu_item_id
 WHERE order_id IN (440, 2075, 1957, 330, 2675)
 GROUP BY order_id, category
+ORDER BY total_spent DESC
 LIMIT 5;
 ```
 Results
 | order\_id | category | total\_items | total\_spent |
 | :--- | :--- | :--- | :--- |
+| 440 | Italian | 8 | 132.25 |
+| 2075 | Italian | 6 | 99.80 |
 | 330 | Asian | 6 | 87.40 |
-| 330 | American | 1 | 9.00 |
-| 330 | Italian | 3 | 50.40 |
-| 330 | Mexican | 4 | 42.90 |
-| 440 | Mexican | 2 | 20.95 |
+| 1957 | Italian | 5 | 84.30 |
+| 2675 | Italian | 4 | 63.90 |
