@@ -138,3 +138,47 @@ Results
 | oldest\_order\_date | newest\_order\_date |
 | :--- | :--- |
 | 2023-01-01 | 2023-03-31 |
+
+2. How many orders were made and amount of items within this date range?
+```sql
+SELECT
+    COUNT(DISTINCT order_id) AS orders_made,
+    COUNT(order_id) AS total_items
+FROM order_details;
+```
+Results
+| orders\_made | total\_items |
+| :--- | :--- |
+| 5370 | 12234 |
+
+3. Oredr that had the most items
+```sql
+SELECT
+    order_id,
+    COUNT(item_id) AS total_items
+FROM order_details
+GROUP BY order_id
+ORDER BY total_items DESC
+LIMIT 1;
+```
+Results
+| order\_id | total\_items |
+| :--- | :--- |
+| 330 | 14 |
+
+4. How many orders had more than 12 items?
+```sql
+SELECT
+    COUNT(*) AS twelve_plus_orders
+FROM
+(SELECT
+    order_id,
+    COUNT(item_id) AS total_items
+FROM order_details
+GROUP BY order_id
+HAVING total_items > 12) AS orders;
+```
+Results
+| twelve\_plus\_orders |
+| :--- |
+| 20 |
