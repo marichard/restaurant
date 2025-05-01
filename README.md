@@ -3,13 +3,13 @@ Explore customer data to see which menu items are doing well/not so well and wha
 Main objectives:  
 1. Get an idea of what's on the menu.
 2. Get an idea of the collected data.
-3. Understand how customers are reacting to the menu items avalible.
+3. Understand how customers are reacting to the menu items available.
 
 ## Tools
 IDE: PyCharm  
 Language: SQL  
 Database: MySQL   
-* Dataset provided by Maven Analytics.
+
 
 ### Objective 1
 
